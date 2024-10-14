@@ -27,7 +27,6 @@ if port_in_use 3000; then
 fi
 
 echo "Starting frontend server..."
-cd client
 npm start &
 frontend_pid=$!
 
