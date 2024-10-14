@@ -1,80 +1,226 @@
 [
   {
-    "id": "INV-001",
-    "supplierName": "Registry Nursing Services",
-    "facility": "General Hospital",
-    "invNumber": "RNS-2024-001",
-    "invDate": "2024-10-01",
-    "invAmount": 5000,
+    "id": "INV-N01",
+    "supplierName": "Clipboard Health",
+    "facility": "Valley Pointe Nursing and Rehab",
+    "invNumber": "236823",
+    "invDate": "01-22-2024",
+    "invAmount": 1232.60,
     "status": "Awaiting Review",
-    "aiConfidence": 0.92,
+    "aiConfidence": 0.90,
     "details": {
-      "supplierName": { "value": "Registry Nursing Services", "confidence": 0.98 },
-      "facility": { "value": "General Hospital", "confidence": 0.99 },
-      "invNumber": { "value": "RNS-2024-001", "confidence": 0.97 },
-      "invDate": { "value": "2024-10-01", "confidence": 0.95 },
-      "invAmount": { "value": 5000, "confidence": 0.96 }
+      "supplierName": { "value": "Clipboard Health", "confidence": 0.98 },
+      "facility": { "value": "Valley Pointe Nursing and Rehab", "confidence": 0.99 },
+      "invNumber": { "value": "236823", "confidence": 0.97 },
+      "invDate": { "value": "01-22-2024", "confidence": 0.95 },
+      "invAmount": { "value": 1232.60, "confidence": 0.96 }
     },
     "lineItems": [
       {
         "costCategory": "Nursing",
         "spendCategory": "Temporary Staff",
-        "jobCode": "RN-001",
-        "amount": 1600,
-        "description": "Registered Nurse - 16 hours",
-        "quantity": 16,
-        "unitPrice": 100,
+        "jobCode": "CNA-001",
+        "amount": 268.60,
+        "description": "CNA - Rosalia Beltran Caudel - 7.9 hours",
+        "quantity": 7.9,
+        "unitPrice": 34,
         "confidence": 0.94
       },
       {
         "costCategory": "Nursing",
         "spendCategory": "Temporary Staff",
-        "jobCode": "RN-002",
-        "amount": 1600,
-        "description": "Registered Nurse - 16 hours",
-        "quantity": 16,
-        "unitPrice": 100,
+        "jobCode": "CNA-002",
+        "amount": 68.00,
+        "description": "CNA - Ryan Bartolome-ohano - Late cancelation, 2 hours",
+        "quantity": 2,
+        "unitPrice": 34,
         "confidence": 0.93
       },
       {
         "costCategory": "Nursing",
         "spendCategory": "Temporary Staff",
         "jobCode": "LVN-001",
-        "amount": 960,
-        "description": "Licensed Vocational Nurse - 16 hours",
-        "quantity": 16,
-        "unitPrice": 60,
+        "amount": 456.00,
+        "description": "LVN/LPN - Celina Salter - 8.00 hours",
+        "quantity": 8,
+        "unitPrice": 57,
         "confidence": 0.92
       },
       {
         "costCategory": "Nursing",
         "spendCategory": "Temporary Staff",
         "jobCode": "LVN-002",
-        "amount": 960,
-        "description": "Licensed Vocational Nurse - 16 hours",
-        "quantity": 16,
-        "unitPrice": 60,
+        "amount": 440.00,
+        "description": "LVN/LPN - Hinehina Pita - 8.00 hours",
+        "quantity": 8,
+        "unitPrice": 55,
         "confidence": 0.91
-      },
+      }
+    ]
+  },
+  {
+    "id": "INV-N02",
+    "supplierName": "All Team Staffing",
+    "facility": "The Heights PA",
+    "invNumber": "25002085",
+    "invDate": "10-25-2023",
+    "invAmount": 1268.20,
+    "status": "Awaiting Review",
+    "aiConfidence": 0.90,
+    "details": {
+      "supplierName": { "value": "All Team Staffing", "confidence": 0.98 },
+      "facility": { "value": "The Heights PA", "confidence": 0.99 },
+      "invNumber": { "value": "25002085", "confidence": 0.97 },
+      "invDate": { "value": "10-25-2023", "confidence": 0.95 },
+      "invAmount": { "value": 1268.20, "confidence": 0.96 }
+    },
+    "lineItems": [
       {
         "costCategory": "Nursing",
         "spendCategory": "Temporary Staff",
         "jobCode": "CNA-001",
-        "amount": 440,
-        "description": "Certified Nursing Assistant - 16 hours",
-        "quantity": 16,
-        "unitPrice": 27.5,
-        "confidence": 0.90
+        "amount": 255.00,
+        "description": "Casimar Brown-Scott - 7.5 hours",
+        "quantity": 7.5,
+        "unitPrice": 34.00,
+        "confidence": 0.94
       },
       {
         "costCategory": "Nursing",
         "spendCategory": "Temporary Staff",
         "jobCode": "CNA-002",
-        "amount": 440,
-        "description": "Certified Nursing Assistant - 16 hours",
-        "quantity": 16,
-        "unitPrice": 27.5,
-        "confidence": 0.89
+        "amount": 251.60,
+        "description": "Christina Candeleria - 8.0 hours",
+        "quantity": 8.0,
+        "unitPrice": 31.45,
+        "confidence": 0.93
+      },
+      {
+        "costCategory": "Nursing",
+        "spendCategory": "Temporary Staff",
+        "jobCode": "CNA-003",
+        "amount": 255.00,
+        "description": "Casimar Brown-Scott - 7.5 hours",
+        "quantity": 7.5,
+        "unitPrice": 34.00,
+        "confidence": 0.92
+      },
+      {
+        "costCategory": "Nursing",
+        "spendCategory": "Temporary Staff",
+        "jobCode": "CNA-004",
+        "amount": 251.60,
+        "description": "Christina Candeleria - 8.0 hours",
+        "quantity": 8.0,
+        "unitPrice": 31.45,
+        "confidence": 0.91
+      },
+      {
+        "costCategory": "Nursing",
+        "spendCategory": "Temporary Staff",
+        "jobCode": "CNA-005",
+        "amount": 255.00,
+        "description": "Casimar Brown-Scott - 7.5 hours",
+        "quantity": 7.5,
+        "unitPrice": 34.00,
+        "confidence": 0.90
+      }
+    ]
+  },
+  {
+    "id": "INV-N03",
+    "supplierName": "All American Healthcare Services West LLC",
+    "facility": "Mission Valley Post Acute",
+    "invNumber": "1230017708",
+    "invDate": "10-27-2023",
+    "invAmount": 285.00,
+    "status": "Awaiting Review",
+    "aiConfidence": 0.90,
+    "details": {
+      "supplierName": { "value": "All American Healthcare Services West LLC", "confidence": 0.98 },
+      "facility": { "value": "Mission Valley Post Acute", "confidence": 0.99 },
+      "invNumber": { "value": "1230017708", "confidence": 0.97 },
+      "invDate": { "value": "10-27-2023", "confidence": 0.95 },
+      "invAmount": { "value": 285.00, "confidence": 0.96 }
+    },
+    "lineItems": [
+      {
+        "costCategory": "Nursing",
+        "spendCategory": "Temporary Staff",
+        "jobCode": "CNA-001",
+        "amount": 285.00,
+        "description": "Lindsay Adams - 7.50 hours",
+        "quantity": 7.5,
+        "unitPrice": 38.00,
+        "confidence": 0.94
+      }
+    ]
+  },
+  {
+    "id": "INV-N04",
+    "supplierName": "Vasika Health",
+    "facility": "Winding Trails Post-Acute",
+    "invNumber": "MBC113/WTPA",
+    "invDate": "10-26-2023",
+    "invAmount": 3906.00,
+    "status": "Awaiting Review",
+    "aiConfidence": 0.90,
+    "details": {
+      "supplierName": { "value": "Vasika Health", "confidence": 0.98 },
+      "facility": { "value": "Winding Trails Post-Acute", "confidence": 0.99 },
+      "invNumber": { "value": "MBC113/WTPA", "confidence": 0.97 },
+      "invDate": { "value": "10-26-2023", "confidence": 0.95 },
+      "invAmount": { "value": 3906.00, "confidence": 0.96 }
+    },
+    "lineItems": [
+      {
+        "costCategory": "Nursing",
+        "spendCategory": "Temporary Staff",
+        "jobCode": "RN-001",
+        "amount": 2880.00,
+        "description": "Regular Hours - 40 hours",
+        "quantity": 40,
+        "unitPrice": 72,
+        "confidence": 0.94
+      },
+      {
+        "costCategory": "Nursing",
+        "spendCategory": "Temporary Staff",
+        "jobCode": "RN-002",
+        "amount": 1026.00,
+        "description": "Overtime Hours - 9.5 hours",
+        "quantity": 9.5,
+        "unitPrice": 108,
+        "confidence": 0.93
+      }
+    ]
+  },
+  {
+    "id": "INV-N05",
+    "supplierName": "Ventura MedStaff LLC",
+    "facility": "Cypress Ridge Care Center",
+    "invNumber": "59122",
+    "invDate": "10-28-2023",
+    "invAmount": 3018.35,
+    "status": "Awaiting Review",
+    "aiConfidence": 0.90,
+    "details": {
+      "supplierName": { "value": "Ventura MedStaff LLC", "confidence": 0.98 },
+      "facility": { "value": "Cypress Ridge Care Center", "confidence": 0.99 },
+      "invNumber": { "value": "59122", "confidence": 0.97 },
+      "invDate": { "value": "10-28-2023", "confidence": 0.95 },
+      "invAmount": { "value": 3018.35, "confidence": 0.96 }
+    },
+    "lineItems": [
+      {
+        "costCategory": "Nursing",
+        "spendCategory": "Temporary Staff",
+        "jobCode": "SLP-001",
+        "amount": 3018.35,
+        "description": "Angel Wright - 35.51 hours",
+        "quantity": 35.51,
+        "unitPrice": 85.00,
+        "confidence": 0.94
       }
     ]
   }
