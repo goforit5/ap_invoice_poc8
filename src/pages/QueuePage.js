@@ -1,16 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Search } from 'lucide-react';
-
-const mockInvoices = [
-  { id: 'INV-001', facility: 'General Hospital', supplierName: 'Registry Nursing Services', invDate: '2024-10-01', invNumber: 'RNS-2024-001', invAmount: 5000, status: 'Awaiting Review', aiConfidence: 0.92 },
-  { id: 'INV-002', facility: 'City Medical Center', supplierName: 'Office Supplies Inc', invDate: '2024-10-02', invNumber: 'OSI-2024-002', invAmount: 1500, status: 'Needs Attention', aiConfidence: 0.78 },
-  { id: 'INV-003', facility: 'County Hospital', supplierName: 'Medical Equipment Co', invDate: '2024-10-03', invNumber: 'MEC-2024-003', invAmount: 3000, status: 'Processed', aiConfidence: 0.98 },
-  { id: 'INV-004', facility: 'Private Clinic', supplierName: 'Tech Hardware Ltd', invDate: '2024-10-04', invNumber: 'THL-2024-004', invAmount: 7500, status: 'Awaiting Review', aiConfidence: 0.88 },
-  { id: 'INV-005', facility: 'Urgent Care Center', supplierName: 'Pharmacy Supplies', invDate: '2024-10-05', invNumber: 'PS-2024-005', invAmount: 2000, status: 'Needs Attention', aiConfidence: 0.72 }
-];
+import queueData from '../data/queue.json';
 
 const QueuePage = () => {
-  const [invoices, setInvoices] = useState(mockInvoices);
+  const [invoices, setInvoices] = useState([]);
   const [detailedView, setDetailedView] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -28,6 +21,7 @@ const QueuePage = () => {
   }, []);
 
   useEffect(() => {
+    setInvoices(queueData);
     document.addEventListener('keydown', handleKeyDown);
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
