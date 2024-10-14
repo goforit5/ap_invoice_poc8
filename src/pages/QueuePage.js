@@ -15,13 +15,15 @@ const QueuePage = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleKeyDown = useCallback((event) => {
-    if (event.key === 'd') {
-      setDetailedView(prev => !prev);
-    } else if (event.key === '/') {
-      event.preventDefault();
-      document.getElementById('searchInput').focus();
-    } else if (event.key === 'Enter' && filteredInvoices.length > 0) {
-      alert(`Opening invoice: ${filteredInvoices[0].id}`);
+    if (document.activeElement.id !== 'searchInput') {
+      if (event.key === 'd') {
+        setDetailedView(prev => !prev);
+      } else if (event.key === '/') {
+        event.preventDefault();
+        document.getElementById('searchInput').focus();
+      } else if (event.key === 'Enter' && filteredInvoices.length > 0) {
+        alert(`Opening invoice: ${filteredInvoices[0].id}`);
+      }
     }
   }, []);
 

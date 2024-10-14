@@ -34,15 +34,21 @@ const ReviewPage = () => {
   const [zoomLevel, setZoomLevel] = useState(100);
 
   const handleKeyDown = useCallback((event) => {
-    if (event.key === 'd') {
-      setDetailedView(prev => !prev);
-    } else if (event.key === '/') {
-      event.preventDefault();
-      document.getElementById('searchInput').focus();
-    } else if (event.key === 'a') {
-      alert('Invoice approved');
-    } else if (event.key === 'r') {
-      alert('Invoice rejected');
+    if (document.activeElement.id !== 'searchInput') {
+      if (event.key === 'd') {
+        setDetailedView(prev => !prev);
+      } else if (event.key === '/') {
+        event.preventDefault();
+        document.getElementById('searchInput').focus();
+      } else if (event.key === 'a') {
+        alert('Invoice approved');
+      } else if (event.key === 'r') {
+        alert('Invoice rejected');
+      } else if (event.key === '+' || event.key === '=') {
+        setZoomLevel(prev => Math.min(prev + 10, 200));
+      } else if (event.key === '-') {
+        setZoomLevel(prev => Math.max(prev - 10, 50));
+      }
     }
   }, []);
 
