@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import { Search, ZoomIn, ZoomOut } from 'lucide-react';
 import { getInvoiceById } from '../utils/invoiceUtils';
+import { formatAsDollars, formatFieldName } from '../utils/formatUtils';
 
 const ReviewPage = () => {
   const { id } = useParams();
@@ -159,8 +160,10 @@ const ReviewPage = () => {
             <div className="grid grid-cols-2 gap-4">
               {Object.entries(invoice.details).map(([key, { value, confidence }]) => (
                 <div key={key}>
-                  <p className="text-sm font-medium text-gray-500">{key}</p>
-                  <p className="text-sm text-gray-900">{highlightSearchTerm(value)}</p>
+                  <p className="text-sm font-medium text-gray-500">{formatFieldName(key)}</p>
+                  <p className="text-sm text-gray-900">
+                    {key.toLowerCase().includes('amount') ? formatAsDollars(value) : highlightSearchTerm(value)}
+                  </p>
                   {detailedView && <ConfidenceBar confidence={confidence} />}
                 </div>
               ))}
@@ -193,12 +196,12 @@ const ReviewPage = () => {
                   <td className="px-4 py-2">
                     {highlightSearchTerm(`${item.costCategory}/${item.spendCategory}/${item.jobCode}`)}
                   </td>
-                  <td className="px-4 py-2 text-right">${item.amount.toLocaleString()}</td>
+                  <td className="px-4 py-2 text-right">{formatAsDollars(item.amount)}</td>
                   {detailedView && (
                     <>
                       <td className="px-4 py-2">{highlightSearchTerm(item.description)}</td>
                       <td className="px-4 py-2 text-right">{item.quantity}</td>
-                      <td className="px-4 py-2 text-right">${item.unitPrice.toFixed(2)}</td>
+                      <td className="px-4 py-2 text-right">{formatAsDollars(item.unitPrice)}</td>
                       <td className="px-4 py-2">
                         <ConfidenceBar confidence={item.confidence} />
                       </td>

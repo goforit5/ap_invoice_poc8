@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Search } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import queueData from '../data/queue.json';
+import { formatAsDollars } from '../utils/formatUtils';
 
 const QueuePage = () => {
   const [invoices, setInvoices] = useState([]);
@@ -126,7 +127,7 @@ const QueuePage = () => {
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{invoice.supplierName}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{invoice.invDate}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{invoice.invNumber}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${invoice.invAmount.toLocaleString()}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{formatAsDollars(invoice.invAmount)}</td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(invoice.status)}`}>
                     {invoice.status}
