@@ -21,3 +21,17 @@ function App() {
 }
 
 export default App;
+import React from 'react';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>AP Invoice Processing</h1>
+        <p>Welcome to the AP Invoice Processing application.</p>
+      </header>
+    </div>
+  );
+}
+
+export default App;
