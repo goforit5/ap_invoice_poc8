@@ -1,4 +1,4 @@
-import invoicesData from '../data/invoices.json';
+import invoicesData from '../data/invoices.json?v=' + new Date().getTime();
 
 export const getInvoiceById = (id) => {
   console.log('Searching for invoice with id:', id);
