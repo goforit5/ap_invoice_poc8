@@ -60,6 +60,13 @@ const ReviewPage = () => {
     };
   }, [id, handleKeyDown]);
 
+  // Add a new useEffect to log when the invoice state changes
+  useEffect(() => {
+    if (invoice) {
+      console.log('Invoice state updated:', invoice);
+    }
+  }, [invoice]);
+
   const getConfidenceColor = (score) => {
     if (score >= 0.9) return 'bg-green-500';
     if (score >= 0.8) return 'bg-yellow-500';
