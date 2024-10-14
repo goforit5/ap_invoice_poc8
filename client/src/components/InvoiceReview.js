@@ -81,7 +81,7 @@ const InvoiceReview = ({ onApprove, onReject, onNextInvoice }) => {
   );
 
   return (
-    <div className="p-6 bg-gray-100 font-sans min-h-screen">
+    <div className="p-6 bg-gray-100 font-sans">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold text-blue-600">AP Invoice Processing</h1>
         <div className="flex space-x-4">
