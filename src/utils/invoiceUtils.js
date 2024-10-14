@@ -5,6 +5,9 @@ export const getInvoiceById = (id) => {
   console.log('Searching for invoice with id:', id);
   console.log('Available invoices:', invoicesData);
   console.log('Invoice IDs:', invoicesData.map(inv => inv.id));
+  console.log('Searching for invoice with id:', id);
+  console.log('Available invoices:', invoicesData);
+  console.log('Invoice IDs:', invoicesData.map(inv => inv.id));
   const invoice = invoicesData.find(invoice => invoice.id === id);
   if (invoice) {
     console.log('Found invoice:', invoice);
