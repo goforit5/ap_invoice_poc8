@@ -9,6 +9,7 @@ const ReviewPage = () => {
   const [detailedView, setDetailedView] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [zoomLevel, setZoomLevel] = useState(100);
+  const [error, setError] = useState(null);
 
   const handleKeyDown = useCallback((event) => {
     if (document.activeElement.id !== 'searchInput') {
@@ -31,7 +32,12 @@ const ReviewPage = () => {
 
   useEffect(() => {
     const fetchedInvoice = getInvoiceById(id);
-    setInvoice(fetchedInvoice);
+    console.log('Fetched invoice:', fetchedInvoice); // Debug log
+    if (fetchedInvoice) {
+      setInvoice(fetchedInvoice);
+    } else {
+      setError(`Invoice with ID ${id} not found`);
+    }
     document.addEventListener('keydown', handleKeyDown);
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
@@ -63,9 +69,15 @@ const ReviewPage = () => {
     </div>
   );
 
+  if (error) {
+    return <div className="bg-white shadow rounded-lg p-6">Error: {error}</div>;
+  }
+
   if (!invoice) {
     return <div className="bg-white shadow rounded-lg p-6">Loading...</div>;
   }
+
+  console.log('Rendering invoice:', invoice); // Debug log
 
   return (
     <div className="bg-white shadow rounded-lg p-6">
