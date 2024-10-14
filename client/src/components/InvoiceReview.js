@@ -28,7 +28,7 @@ const mockInvoice = {
 };
 
 const InvoiceReview = ({ onApprove, onReject, onNextInvoice }) => {
-  const [invoice, setInvoice] = useState(mockInvoice);
+  const [invoice] = useState(mockInvoice);
   const [detailedView, setDetailedView] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [zoomLevel, setZoomLevel] = useState(100);
