@@ -3,6 +3,10 @@ import { useParams, useLocation } from 'react-router-dom';
 import { Search, ZoomIn, ZoomOut } from 'lucide-react';
 import { getInvoiceById } from '../utils/invoiceUtils';
 import { formatAsDollars, formatFieldName } from '../utils/formatUtils';
+import { Document, Page, pdfjs } from 'react-pdf';
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 const ReviewPage = () => {
   const { id } = useParams();
@@ -139,8 +143,19 @@ const ReviewPage = () => {
         <div>
           <div className="bg-gray-100 p-4 rounded-lg mb-6">
             <h3 className="text-lg font-semibold mb-4">Invoice Preview</h3>
-            <div className="relative h-96 bg-white flex items-center justify-center border">
-              <p className="text-gray-500">PDF Viewer Placeholder</p>
+            <div className="relative h-96 bg-white flex items-center justify-center border overflow-auto">
+              <Document
+                file={`${process.env.PUBLIC_URL}/src/data/files/inv-${invoice.details.invNumber.value.toLowerCase()}.pdf`}
+                onLoadSuccess={({ numPages }) => console.log('PDF loaded successfully, pages:', numPages)}
+                onLoadError={(error) => console.error('Error loading PDF:', error)}
+              >
+                <Page 
+                  pageNumber={1} 
+                  scale={zoomLevel / 100}
+                  renderTextLayer={false}
+                  renderAnnotationLayer={false}
+                />
+              </Document>
               <div className="absolute bottom-4 right-4 flex space-x-2">
                 <button onClick={() => setZoomLevel(prev => Math.min(prev + 10, 200))} className="p-2 bg-white rounded-full shadow">
                   <ZoomIn size={20} />
