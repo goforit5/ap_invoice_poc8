@@ -12,7 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/queue" replace />} />
           <Route path="/queue" element={<QueuePage />} />
-          <Route path="/review" element={<ReviewPage />} />
+          <Route path="/review/:id" element={<ReviewPage />} />
           <Route path="/upload" element={<UploadPage />} />
         </Routes>
       </Layout>

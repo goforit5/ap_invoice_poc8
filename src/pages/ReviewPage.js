@@ -1,46 +1,62 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { Search, ZoomIn, ZoomOut } from 'lucide-react';
 import { getInvoiceById } from '../utils/invoiceUtils';
 
 const ReviewPage = () => {
   const { id } = useParams();
+  const location = useLocation();
   const [invoice, setInvoice] = useState(null);
   const [detailedView, setDetailedView] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [zoomLevel, setZoomLevel] = useState(100);
   const [error, setError] = useState(null);
 
+  console.log('ReviewPage rendered. Current route:', location.pathname);
+  console.log('Invoice ID from params:', id);
+
   const handleKeyDown = useCallback((event) => {
+    console.log('Key pressed:', event.key);
     if (document.activeElement.id !== 'searchInput') {
       if (event.key === 'd') {
         setDetailedView(prev => !prev);
+        console.log('Detailed view toggled:', !detailedView);
       } else if (event.key === '/') {
         event.preventDefault();
         document.getElementById('searchInput').focus();
+        console.log('Search input focused');
       } else if (event.key === 'a') {
+        console.log('Invoice approved');
         alert('Invoice approved');
       } else if (event.key === 'r') {
+        console.log('Invoice rejected');
         alert('Invoice rejected');
       } else if (event.key === '+' || event.key === '=') {
         setZoomLevel(prev => Math.min(prev + 10, 200));
+        console.log('Zoom level increased:', Math.min(zoomLevel + 10, 200));
       } else if (event.key === '-') {
         setZoomLevel(prev => Math.max(prev - 10, 50));
+        console.log('Zoom level decreased:', Math.max(zoomLevel - 10, 50));
       }
     }
-  }, []);
+  }, [detailedView, zoomLevel]);
 
   useEffect(() => {
+    console.log('Fetching invoice with ID:', id);
     const fetchedInvoice = getInvoiceById(id);
-    console.log('Fetched invoice:', fetchedInvoice); // Debug log
+    console.log('Fetched invoice:', fetchedInvoice);
     if (fetchedInvoice) {
       setInvoice(fetchedInvoice);
+      console.log('Invoice set in state:', fetchedInvoice);
     } else {
-      setError(`Invoice with ID ${id} not found`);
+      const errorMessage = `Invoice with ID ${id} not found`;
+      console.error(errorMessage);
+      setError(errorMessage);
     }
     document.addEventListener('keydown', handleKeyDown);
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
+      console.log('Cleanup: removed keydown event listener');
     };
   }, [id, handleKeyDown]);
 
