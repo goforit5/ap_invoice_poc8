@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Search } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import queueData from '../data/queue.json';
 
 const QueuePage = () => {
   const [invoices, setInvoices] = useState([]);
+  const navigate = useNavigate();
   const [detailedView, setDetailedView] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -119,7 +121,7 @@ const QueuePage = () => {
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
             {filteredInvoices.map((invoice) => (
-              <tr key={invoice.id} className="cursor-pointer hover:bg-gray-50" onClick={() => alert(`Opening invoice: ${invoice.id}`)}>
+              <tr key={invoice.id} className="cursor-pointer hover:bg-gray-50" onClick={() => navigate(`/review/${invoice.id}`)}>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{invoice.facility}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{invoice.supplierName}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{invoice.invDate}</td>

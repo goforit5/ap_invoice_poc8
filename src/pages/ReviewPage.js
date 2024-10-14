@@ -1,34 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useParams } from 'react-router-dom';
 import { Search, ZoomIn, ZoomOut } from 'lucide-react';
-
-const mockInvoice = {
-  id: 'INV-001',
-  supplierName: 'Registry Nursing Services',
-  facility: 'General Hospital',
-  invNumber: 'RNS-2024-001',
-  invDate: '2024-10-01',
-  invAmount: 5000,
-  status: 'Awaiting Review',
-  aiConfidence: 0.92,
-  details: {
-    supplierName: { value: 'Registry Nursing Services', confidence: 0.98 },
-    facility: { value: 'General Hospital', confidence: 0.99 },
-    invNumber: { value: 'RNS-2024-001', confidence: 0.97 },
-    invDate: { value: '2024-10-01', confidence: 0.95 },
-    invAmount: { value: 5000, confidence: 0.96 },
-  },
-  lineItems: [
-    { costCategory: 'Nursing', spendCategory: 'Temporary Staff', jobCode: 'RN-001', amount: 1600, description: 'Registered Nurse - 16 hours', quantity: 16, unitPrice: 100, confidence: 0.94 },
-    { costCategory: 'Nursing', spendCategory: 'Temporary Staff', jobCode: 'RN-002', amount: 1600, description: 'Registered Nurse - 16 hours', quantity: 16, unitPrice: 100, confidence: 0.93 },
-    { costCategory: 'Nursing', spendCategory: 'Temporary Staff', jobCode: 'LVN-001', amount: 960, description: 'Licensed Vocational Nurse - 16 hours', quantity: 16, unitPrice: 60, confidence: 0.92 },
-    { costCategory: 'Nursing', spendCategory: 'Temporary Staff', jobCode: 'LVN-002', amount: 960, description: 'Licensed Vocational Nurse - 16 hours', quantity: 16, unitPrice: 60, confidence: 0.91 },
-    { costCategory: 'Nursing', spendCategory: 'Temporary Staff', jobCode: 'CNA-001', amount: 440, description: 'Certified Nursing Assistant - 16 hours', quantity: 16, unitPrice: 27.5, confidence: 0.90 },
-    { costCategory: 'Nursing', spendCategory: 'Temporary Staff', jobCode: 'CNA-002', amount: 440, description: 'Certified Nursing Assistant - 16 hours', quantity: 16, unitPrice: 27.5, confidence: 0.89 },
-  ]
-};
+import { getInvoiceById } from '../utils/invoiceUtils';
 
 const ReviewPage = () => {
-  const [invoice, setInvoice] = useState(mockInvoice);
+  const { id } = useParams();
+  const [invoice, setInvoice] = useState(null);
   const [detailedView, setDetailedView] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [zoomLevel, setZoomLevel] = useState(100);
@@ -53,11 +30,13 @@ const ReviewPage = () => {
   }, []);
 
   useEffect(() => {
+    const fetchedInvoice = getInvoiceById(id);
+    setInvoice(fetchedInvoice);
     document.addEventListener('keydown', handleKeyDown);
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [handleKeyDown]);
+  }, [id, handleKeyDown]);
 
   const getConfidenceColor = (score) => {
     if (score >= 0.9) return 'bg-green-500';
@@ -84,10 +63,14 @@ const ReviewPage = () => {
     </div>
   );
 
+  if (!invoice) {
+    return <div className="bg-white shadow rounded-lg p-6">Loading...</div>;
+  }
+
   return (
     <div className="bg-white shadow rounded-lg p-6">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-semibold text-gray-700">Invoice Review</h2>
+        <h2 className="text-xl font-semibold text-gray-700">Invoice Review - {invoice.id}</h2>
         <div className="flex space-x-4">
           <button className="px-4 py-2 bg-green-500 text-white rounded" onClick={() => alert('Invoice approved')}>Approve (A)</button>
           <button className="px-4 py-2 bg-red-500 text-white rounded" onClick={() => alert('Invoice rejected')}>Reject (R)</button>
