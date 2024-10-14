@@ -14,11 +14,22 @@ kill_port() {
 cleanup() {
     echo "Cleaning up..."
     kill_port 3000
+    deactivate
     exit
 }
 
 # Set up trap to call cleanup function on script exit
 trap cleanup EXIT
+
+# Activate virtual environment
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Install frontend dependencies
+cd client
+npm install
 
 # Check and start frontend server
 if port_in_use 3000; then
@@ -27,7 +38,6 @@ if port_in_use 3000; then
 fi
 
 echo "Starting frontend server..."
-cd client
 npm start &
 frontend_pid=$!
 
